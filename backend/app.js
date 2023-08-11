@@ -27,7 +27,11 @@ app.use(cookieParser());
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
-
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateCreateUser, createUser);
 
