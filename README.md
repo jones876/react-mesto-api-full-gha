@@ -11,6 +11,6 @@
 
 IP-адрес 51.250.39.61
 
-Frontend http://jeka.nomoreparties.co
+Frontend https://jeka.nomoreparties.co
 
-Backend http://api.jeka.nomoreparties.co
+Backend https://api.jeka.nomoreparties.co

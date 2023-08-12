@@ -20,7 +20,10 @@ const app = express();
 app.use(requestLogger);
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000',
+    'https://api.jeka.nomoreparties.co',
+    'https://jeka.nomoreparties.co',
+  ],
 }));
 app.use(express.json());
 app.use(cookieParser());

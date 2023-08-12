@@ -101,7 +101,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: "http://api.jeka.nomoreparties.co",
+  baseUrl: "https://api.jeka.nomoreparties.co",
   headers: {
     "Content-Type": "application/json;  character=UTF-8",
   },
