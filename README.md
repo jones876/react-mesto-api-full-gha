@@ -66,7 +66,7 @@
 
 ## Ссылки на проект
 
-IP-адрес: 51.250.39.61
+IP [51.250.39.61]
 
 Frontend https://jeka.nomoreparties.co
 
