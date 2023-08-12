@@ -101,7 +101,7 @@ class Api {
 
 
 const api = new Api({
-  baseUrl: "http://localhost:3000",
+  baseUrl: "http://api.jeka.nomoreparties.co",
   headers: {
     "Content-Type": "application/json;  character=UTF-8",
   },
