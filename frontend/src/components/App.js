@@ -170,11 +170,14 @@ useEffect(() => {
 
   
   function signOut() {
-  
-    localStorage.removeItem('email');
-    setLoggedIn(false);
-    setUserEmail('');
-    navigate('/sign-in');
+    auth.signOut()
+    .then(()=> {
+      localStorage.removeItem('email');
+      setLoggedIn(false);
+      setUserEmail('');
+      navigate('/sign-in');
+    })
+    .catch(console.error)
   }
 
   return (

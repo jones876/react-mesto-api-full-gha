@@ -1,5 +1,7 @@
 require('dotenv').config();
 const express = require('express');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -12,12 +14,19 @@ const { PORT = 3000 } = process.env;
 const usersRoutes = require('./routes/users');
 const cardsRoutes = require('./routes/cards');
 const { validateLogin, validateCreateUser } = require('./middlewares/validate');
-const { login, createUser } = require('./controllers/users');
+const { login, createUser, signOut } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./utils/errors/NotFoundError');
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
 const app = express();
 app.use(requestLogger);
+app.use(helmet());
+app.use(limiter);
 app.use(cors({
   credentials: true,
   origin: ['http://localhost:3000',
@@ -37,6 +46,7 @@ app.get('/crash-test', () => {
 });
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateCreateUser, createUser);
+app.delete('/signout', signOut);
 
 app.use(auth);
 app.use('/users', usersRoutes);
